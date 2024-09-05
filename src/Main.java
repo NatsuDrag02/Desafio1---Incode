@@ -96,6 +96,7 @@ public class Main {
                     for (String numero : minhaLista) {
                         num = +1;
                         meusnumeros.add(String.valueOf(num));}
+                    System.out.println("Tarefa adicionada com sucesso");
                 }
 
                 r2 = 0;
