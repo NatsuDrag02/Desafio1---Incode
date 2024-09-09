@@ -13,8 +13,8 @@ public class Main {
 
         String r = " ";
         System.out.println("Para ver o menu digite 1");
+        r = teclado.nextLine();
         while (!r.equals("1")) {
-            r = teclado.nextLine();
             if (!r.equals("1")) {
                 System.out.println("Digite uma entrada válida, por favor");
                 r = teclado.nextLine();
@@ -155,10 +155,11 @@ public class Main {
                     System.out.println(n3 + " - " + elemento);
                     n3 = n3 + 1;}
                 System.out.println("Digite 1 para voltar ao menu, ou 2 para encerrar o programa");
+                r3 = teclado.nextLine();
                 while (!r3.equals("1") && !r3.equals("2")) {
-                    if (!teclado.hasNextInt()) {
+                    if (!r3.equals("1") && !r3.equals("2")) {
                         System.out.println("Digite uma entrada válida, por favor");
-                        teclado.nextLine();
+                        r3 = teclado.nextLine();
                     } else {
                         r3 = teclado.nextLine();
                     }
