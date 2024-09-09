@@ -11,41 +11,39 @@ public class Main {
         // Abre o menu
         // Também verifica se a entrada é o comando pedido
 
-        int r = 0;
+        String r = " ";
         System.out.println("Para ver o menu digite 1");
-        while (r != 1) {
-            if (!teclado.hasNextInt()) {
+        while (!r.equals("1")) {
+            r = teclado.nextLine();
+            if (!r.equals("1")) {
                 System.out.println("Digite uma entrada válida, por favor");
-                teclado.next();
+                r = teclado.nextLine();
             } else {
-                r = teclado.nextInt();
-                teclado.nextLine();
-                if (r != 1) {
-                    System.out.println("Digite uma entrada válida, por favor");
-                }
+                break;
             }
         }
 
 
         // Menu
 
-        int r2 = 0;
-        while (r2 != 4) {
+        String r2 = " ";
+        while (!r.equals("4")) {
             System.out.println("Escolha\n" +
                     "1 para adicionar uma tarefa\n" +
                     "2 para marcar uma tarefa como concluída\n" +
                     "3 para ver a lista de tarefas\n" +
                     "4 para encerrar o programa");
-            while (r2 != 1 && r2 != 2 && r2 != 3 && r2 != 4) {
-                if (!teclado.hasNextInt()) {
+            r2 = teclado.nextLine();
+            if (r2.equals("4")){
+                break;
+            }
+            while (!r2.equals("1") && !r2.equals("2") && !r2.equals("3") && r2.equals("4")) {
+                if (!r2.equals("1") && !r2.equals("2") && !r2.equals("3") && r2.equals("4")) {
                     System.out.println("Digite uma entrada válida, por favor");
                     teclado.nextLine();
                 } else {
-                    r2 = teclado.nextInt();
+                    r2 = teclado.nextLine();
                     teclado.nextLine();
-                    if (r2 != 1 && r2 != 2 && r2 != 3 && r2 != 4) {
-                        System.out.println("Digite uma entrada válida, por favor");
-                    }
                 }
             }
 
@@ -53,9 +51,9 @@ public class Main {
             // Verifica se a tarefa existe e não permite adicionar a mesma tarefa
             // Se a tarefa não existir, adiciona a tarefa
             // No meio há uma validação para uma resposta válida
-            int r3 = 0;
+            String r3 = " ";
             boolean tarefaexiste = false;
-            if (r2 == 1) {
+            if (r2.equals("1")) {
                 System.out.println("Diga a tarefa a ser adicionada: ");
                 String user = teclado.nextLine().trim();
                 while (user.isEmpty() || user.matches("\\d+")) {
@@ -75,19 +73,19 @@ public class Main {
                 if (tarefaexiste) {
                     System.out.println("Essa tarefa já está na adicionada na lista");
                     System.out.println("Digite 1 para voltar ao menu ou 2 para encerrar o programa");
-                    while (r3 != 1 && r3 != 2) {
+                    while (!r3.equals("1") && !r3.equals("2")) {
                         if (!teclado.hasNextInt()) {
                             System.out.println("Digite uma entrada válida, por favor");
                             teclado.nextLine();
                         } else {
-                            r3 = teclado.nextInt();
+                            r3 = teclado.nextLine();
                             teclado.nextLine();
-                            if (r3 != 1 && r3 != 2) {
+                            if (!r3.equals("1") && !r3.equals("2")) {
                                 System.out.println("Digite uma entrada válida, por favor");
                             }
                         }
                     }
-                    if (r3 == 2) {
+                    if (r3.equals("2")) {
                         break;
                     }
                 } else {
@@ -99,13 +97,13 @@ public class Main {
                     System.out.println("Tarefa adicionada com sucesso");
                 }
 
-                r2 = 0;
+                r2 = " ";
 
 
                 // Escolhe uma tarefa dentro da lista para ser marcada como concluída
                 // Ao escolher uma tarefa, remove ela da lista
 
-            } else if (r2 == 2) {
+            } else if (r2.equals("2")) {
                 System.out.println("Escolha a tarefa a ser marcada como concluída, " +
                         "ou digite 'voltar' para retornar ao menu");
                 System.out.println("Suas Tarefas:");
@@ -146,39 +144,30 @@ public class Main {
                     }
                 }
 
-                r2 = 0;
+                r2 = " ";
 
                 // Mostra a lista de tarefas
 
-            } else if (r2 == 3) {
+            } else if (r2.equals("3")) {
                 System.out.println("Essas são suas tarefas: ");
                 int n3 = 1;
                 for (String elemento : minhaLista){
                     System.out.println(n3 + " - " + elemento);
                     n3 = n3 + 1;}
                 System.out.println("Digite 1 para voltar ao menu, ou 2 para encerrar o programa");
-                while (r3 != 1 && r3 != 2) {
+                while (!r3.equals("1") && !r3.equals("2")) {
                     if (!teclado.hasNextInt()) {
                         System.out.println("Digite uma entrada válida, por favor");
                         teclado.nextLine();
                     } else {
-                        r3 = teclado.nextInt();
-                        teclado.nextLine();
-                        if (r3 != 1 && r3 != 2) {
-                            System.out.println("Digite uma entrada válida, por favor");
-                        }
+                        r3 = teclado.nextLine();
                     }
                 }
-                if (r3 == 2){
+                if (r3.equals("2")){
                     break;
                 }
-            } else if (r2 == 4) {
-                break;
             }
-            r2 = 0;
-
         }
-
         System.out.println("Programa encerrado");
     }
 }
